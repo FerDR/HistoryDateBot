@@ -4,6 +4,8 @@ import time
 import datetime
 from numpy import random
 import urllib.request
+from pathlib import Path
+import os
 
 def upload_comment(graph, post_id, message="", img_path=None):
     if img_path:
