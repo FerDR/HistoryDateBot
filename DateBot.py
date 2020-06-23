@@ -87,7 +87,9 @@ def make_text(date, timezone, info, category):
             text+=' died.'
     else:
         text+="Today's holiday is {}.".format(info)
-    return text.replace('Hitler','AN AUSTRIAN PAINTER')
+    text = text.replace('Hitler','AN AUSTRIAN PAINTER')
+    text = text.replace('Argentina', 'VAAAAMOS ARGENTINA CARAJO')
+    return text
 
 def get_article(title, info, category,debug=False):
     links = wikipedia.page(title).links
