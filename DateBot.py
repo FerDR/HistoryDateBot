@@ -141,9 +141,9 @@ def get_image(link,debug=False):
         form = url.split('.')[-1]
         i+=1
     if form=='svg':
-        return '/home/pi/Documents/Date/nominal.png'
-    urllib.request.urlretrieve(url, '/home/pi/Documents/Date/image.{}'.format(form))
-    return '/home/pi/Documents/Date/image.{}'.format(form)
+        return '/home/pi/Documents/HistoryDateBot/nominal.png'
+    urllib.request.urlretrieve(url, '/home/pi/Documents/HistoryDateBot/image.{}'.format(form))
+    return '/home/pi/Documents/HistoryDateBot/image.{}'.format(form)
 
 def main(debug=False):
     day,month,timezone = get_date()
@@ -153,6 +153,6 @@ def main(debug=False):
     try:
         img_path = get_image(get_article(date,info,category,debug),debug)
     except:
-        img_path = '/home/pi/Documents/Date/nominal.png'
+        img_path = '/home/pi/Documents/HistoryDateBot/nominal.png'
     gr, p_id = upload(text,getAccessToken(),img_path)
     #print(text,img_path)
