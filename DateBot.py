@@ -152,5 +152,5 @@ def main(debug=False):
         img_path = get_image(get_article(date,info,category,debug),debug)
     except:
         img_path = '/home/pi/Documents/Date/nominal.png'
-    #gr, p_id = upload(text,getAccessToken(),img_path)
-    print(text,img_path)
+    gr, p_id = upload(text,getAccessToken(),img_path)
+    #print(text,img_path)
