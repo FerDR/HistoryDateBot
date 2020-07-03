@@ -78,7 +78,10 @@ def get_info(content):
 def make_text(date, timezone, info, category):
     text = "Today is {} in timezone UTC{}\n\n".format(date.replace('_',' '),timezone)
     if category!='Holiday':
-        year = int(info.split(' – ')[0])
+        try:
+          year = int(info.split(' – ')[0])
+        except:
+          year = info.split(' – ')[0]
         fact = info.split(' – ')[1]
         text+="On this day in {}, {}".format(year,fact)
         if category=='Event':
