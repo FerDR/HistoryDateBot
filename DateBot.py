@@ -138,7 +138,7 @@ def get_image(link,debug=False):
     img = [imgs for imgs in im if 'svg' not in imgs]
     ims = [imgs for imgs in im if 'ogg' not in imgs]
     i = 0
-    while form=='svg'and i < 10:
+    while form=='svg'and i < 7:
         url = img[random.randint(len(img))]
         if debug:
             print(url)
