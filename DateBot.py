@@ -61,13 +61,13 @@ def get_info(content):
     deaths = consplit[2].split('==\n')[1].split('\n')
     holidays = consplit[3].split('==\n')[1].split('\n')
     r = random.rand()
-    if r<0.5:
+    if r<0.65:
         event = events[random.randint(len(events))]
         return event, 'Event'
-    elif r<0.7:
+    elif r<0.80:
         birth = births[random.randint(len(births))]
         return birth, 'Birth'
-    elif r<0.9:
+    elif r<0.95:
         death = deaths[random.randint(len(deaths))]
         return death, 'Death'
     else:
@@ -136,7 +136,9 @@ def get_image(link,debug=False):
     page = wikipedia.page(link)
     im = page.images
     img = [imgs for imgs in im if 'svg' not in imgs]
-    ims = [imgs for imgs in im if 'ogg' not in imgs]
+    img = [imgs for imgs in img if 'ogg' not in imgs]
+    img = [imgs for imgs in img if 'ovg' not in imgs]
+    img = [imgs for imgs in img if 'oga' not in imgs]
     i = 0
     while form=='svg'and i < 7:
         url = img[random.randint(len(img))]
