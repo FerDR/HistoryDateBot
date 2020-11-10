@@ -48,7 +48,7 @@ def get_content(day, month):
               'October', 'November', 'December']
     mon = months[month-1]
     title = mon+"_{}".format(day)
-    page = wikipedia.page(title)
+    page = wikipedia.page(title,auto_suggest=False)
     con = page.content
     con = con.split('== Events ==\n')[1]
     con = con.split('\n\n\n== References ==')[0]
@@ -133,7 +133,7 @@ def get_image(link,debug=False):
     if debug:
         print(link)
     form = 'svg'
-    page = wikipedia.page(link)
+    page = wikipedia.page(link,auto_suggest=False)
     im = page.images
     img = [imgs for imgs in im if 'svg' not in imgs]
     img = [imgs for imgs in img if 'ogg' not in imgs]
@@ -148,9 +148,9 @@ def get_image(link,debug=False):
         i+=1
     if form=='svg':
         return 'nominal'
-        #return '/home/pi/Documents/HistoryDateBot/nominal.png'
-    urllib.request.urlretrieve(url, '/home/pi/Documents/HistoryDateBot/image.{}'.format(form))
-    return '/home/pi/Documents/HistoryDateBot/image.{}'.format(form)
+        #return '/home/fer/BotsFacebook/HistoryDateBot/nominal.png'
+    urllib.request.urlretrieve(url, '/home/fer/Bots/Facebook/HistoryDateBot/image.{}'.format(form))
+    return '/home/fer/Bots/Facebook/HistoryDateBot/image.{}'.format(form)
 
 def main(debug=False):
     day,month,timezone = get_date()
@@ -161,13 +161,13 @@ def main(debug=False):
         img_path = get_image(get_article(date,info,category,debug),debug)
     except:
         img_path = 'nominal'
-        #img_path = '/home/pi/Documents/HistoryDateBot/nominal.png'
+        #img_path = '/home/fer/BotsFacebook/HistoryDateBot/nominal.png'
     if img_path=='nominal':
         if category=='Event' or category=='Holiday':
-            img_path = '/home/pi/Documents/HistoryDateBot/nominal.png'
+            img_path = '/home/fer/Bots/Facebook/HistoryDateBot/nominal.png'
         elif category=='Birth':
-            img_path = '/home/pi/Documents/HistoryDateBot/Birthday.jpeg'
+            img_path = '/home/fer/Bots/Facebook/HistoryDateBot/Birthday.jpeg'
         elif category=='Death':
-            img_path = '/home/pi/Documents/HistoryDateBot/Death.jpg'
+            img_path = '/home/fer/Bots/Facebook/HistoryDateBot/Death.jpg'
     gr, p_id = upload(text,getAccessToken(),img_path)
     #print(text,img_path)
