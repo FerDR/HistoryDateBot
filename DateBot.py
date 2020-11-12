@@ -149,8 +149,8 @@ def get_image(link,debug=False):
     if form=='svg':
         return 'nominal'
         #return '/home/fer/BotsFacebook/HistoryDateBot/nominal.png'
-    urllib.request.urlretrieve(url, '/home/fer/Bots/Facebook/HistoryDateBot/image.{}'.format(form))
-    return '/home/fer/Bots/Facebook/HistoryDateBot/image.{}'.format(form)
+    urllib.request.urlretrieve(url, '/home/fer/Documents/Bots/Facebook/HistoryDateBot/image.{}'.format(form))
+    return '/home/fer/Documents/Bots/Facebook/HistoryDateBot/image.{}'.format(form)
 
 def main(debug=False):
     day,month,timezone = get_date()
@@ -164,10 +164,10 @@ def main(debug=False):
         #img_path = '/home/fer/BotsFacebook/HistoryDateBot/nominal.png'
     if img_path=='nominal':
         if category=='Event' or category=='Holiday':
-            img_path = '/home/fer/Bots/Facebook/HistoryDateBot/nominal.png'
+            img_path = '/home/fer/Documents/Bots/Facebook/HistoryDateBot/nominal.png'
         elif category=='Birth':
-            img_path = '/home/fer/Bots/Facebook/HistoryDateBot/Birthday.jpeg'
+            img_path = '/home/fer/Documents/Bots/Facebook/HistoryDateBot/Birthday.jpeg'
         elif category=='Death':
-            img_path = '/home/fer/Bots/Facebook/HistoryDateBot/Death.jpg'
+            img_path = '/home/fer/Documents/Bots/Facebook/HistoryDateBot/Death.jpg'
     gr, p_id = upload(text,getAccessToken(),img_path)
     #print(text,img_path)
