@@ -132,7 +132,7 @@ def get_article(title, info, category,debug=False):
 def get_image(link,debug=False):
     if debug:
         print(link)
-    page = wikipedia.page(link,auto_suggest=False)
+    page = wikipedia.page(link,auto_suggest=True)
     im = page.images
     if not im:
         return 'nominal'
