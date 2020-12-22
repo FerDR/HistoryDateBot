@@ -132,24 +132,15 @@ def get_article(title, info, category,debug=False):
 def get_image(link,debug=False):
     if debug:
         print(link)
-    form = 'svg'
     page = wikipedia.page(link,auto_suggest=False)
     im = page.images
-    img = [imgs for imgs in im if 'svg' not in imgs]
-    img = [imgs for imgs in img if 'ogg' not in imgs]
-    img = [imgs for imgs in img if 'ovg' not in imgs]
-    img = [imgs for imgs in img if 'oga' not in imgs]
-    i = 0
-    while form=='svg'and i < 7:
-        url = img[random.randint(len(img))]
-        if debug:
-            print(url)
-        form = url.split('.')[-1]
-        i+=1
-    if form=='svg':
+    if not im:
         return 'nominal'
-        #return '/home/fer/BotsFacebook/HistoryDateBot/nominal.png'
-    urllib.request.urlretrieve(url, '/home/fer/Documents/Bots/Facebook/HistoryDateBot/image.{}'.format(form))
+    img = [imgs for imgs in im if 'png' in imgs or 'jpg' in imgs or 'jpeg' in imgs] 
+    url = img[np.random.randint(len(img))]
+    form = url.split('.')[-1]
+    urllib.request.urlretrieve(url, './image.{}'.format(form))
+    return '/home/fer/Documents/Bots/Facebook/SegueBot/HistoryDateBot.{}'.format(form)
     return '/home/fer/Documents/Bots/Facebook/HistoryDateBot/image.{}'.format(form)
 
 def main(debug=False):
